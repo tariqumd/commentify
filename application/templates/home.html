@@ -18,7 +18,7 @@
 {% endwith %}
 <div class="col-md-8 order-md-1">  
   <br>
-  <form class="needs-validation" action="postcomment" method="POST">
+  <form class="needs-validation" action="home" method="POST">
     <input type="hidden" name="formname" value="">
       <div class="mb-3">
         <label>What would you like to share with world.!?</label>
@@ -32,24 +32,22 @@
 </div>
 
 
-    {% for i in employer %}
+    {% for i in comments %}
   <div class="col-sm-6">
 
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">{{ i['employername']}}</h3>
+        <h6><span data-feather="twitter"></span> {{i['email_id']}}</h6>
         <div class="row">
         <div class="col-sm-8">
-          <h6>Job title</h6><p class="card-text">{{ i['jobtitle']}}</p>
+          {{i['comment']}}
+         <!-- <h6>Job title</h6><p class="card-text">{{ i['jobtitle']}}</p>
         <h6>Skillset</h6><p class="card-text">{{ i['skillset']}}</p>
-
-
-
         </div>
         <div class="col-sm-4">
-        <h6>Job location</h6><p class="card-text"><span class="glyphicon glyphicon-map-marker"></span>{{ i['joblocation'] }}</p>
+       <h6>Job location</h6><p class="card-text"><span class="glyphicon glyphicon-map-marker"></span>{{ i['joblocation'] }}</p>
         <h6>Experience</h6><p class="card-text">{{ i['experience']}} Years</p>
-      <!--  <form action="applied" method="POST">
+      <form action="applied" method="POST">
           <input type="hidden" name="formname" value="apply">
           <input type="hidden" name="id" value= "{{i['jobid']}}" >
         <button type="submit" class="btn btn-success""><span data-feather="file"></span>Apply</button>

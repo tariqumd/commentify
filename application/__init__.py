@@ -37,6 +37,11 @@ class users(db.Model):
     password=db.Column(db.String(90),nullable=False)
     secret_key=db.Column(db.String(60),nullable=False)
 
+class comments(db.Model):
+    comment_id=db.Column(db.Integer,primary_key=True,autoincrement=True,nullable=False)
+    email_id=db.Column(db.String(60),nullable=False)
+    comment=db.Column(db.String(120),nullable=False)
+
 
 from application import routes
 if __name__=="__main__":
