@@ -7,11 +7,14 @@ from sqlalchemy import literal
 @app.route("/index",methods=['GET','POST'])
 def index():
 
+    if session['status']:
+        return redirect('home')
+
     if request.method == "POST":
         user=users.query.filter_by(email_id=request.form.get("email")).first()
         if user and check_password_hash(user.password,request.form.get("password")):
                 session['user']=user.email_id
-                session['status']="logged_in"
+                session['status']=True
                 flash(f"{user.email_id} Logged In","success")
                 return redirect("home")
         else:
@@ -22,6 +25,9 @@ def index():
 
 @app.route("/signup",methods=['GET','POST'])
 def signup():
+
+    if session['status']:
+        return redirect('home')
 
     if request.method=="POST":
         email_check=users.query.filter_by(email_id=request.form.get("email")).scalar()
@@ -40,15 +46,25 @@ def signup():
 
     return render_template("signup.html",signup=True)
 
+@app.route('/forgotpassword',methods=['GET','POST'])
+def forgotpassword():
+
+    if session['status']:
+        return redirect('home')
+        
+    return render_template("forgot_password.html",home=True)
+
 @app.route("/home",methods=['GET','POST'])
 def home():
-
-    return render_template("home.html",home=True)
+    if session['status']:
+        return render_template("home.html",home=True)
+    else:
+        return redirect("index")
 
 @app.route("/logout")
 def logout():
 
     session['user']=""
-    session['status']="logged_out"
+    session['status']=False
     flash("Logged Out","success")
     return redirect(url_for('index'))
