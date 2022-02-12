@@ -9,7 +9,7 @@ from datetime import date,datetime
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///sjp.db'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///commentify_db.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 db=SQLAlchemy(app)
 #login_manager=LoginManager(app)
@@ -26,11 +26,16 @@ def db_drop():
     db.drop_all()
     print('Database dropped!')
 
-#@app.cli.command('db_seed')
-#def db_seed():
+# Seeding database with manual data 
+# @app.cli.command('db_seed')
+# def db_seed():
 
 
 #Database class
+class users(db.Model):
+    email_id=db.Column(db.String(60),primary_key=True,nullable=False)
+    password=db.Column(db.String(90),nullable=False)
+    secret_key=db.Column(db.String(60),nullable=False)
 
 
 from application import routes
