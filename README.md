@@ -10,6 +10,8 @@ Backend: Python, Flask, SQLALCHEMY(ORM'S) is used on SQLITE Database.
 This App is deployed on heroku cloud and is live, and the website url is given below:
 You can instantly create a user in signup, and signin to the app to use it.
 
+User passwords are encrypted and stored, and OpenSSL is used for secure connection.
+
 Site URL: https://commentify-zoho-assesment.herokuapp.com/
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
