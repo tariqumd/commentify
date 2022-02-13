@@ -5,7 +5,9 @@ from sqlalchemy import Column, Integer, String, Float
 from flask_login import LoginManager
 from flask_login import UserMixin,logout_user,current_user,login_required,login_user
 from datetime import date,datetime
-
+from flask_sslify import SSLify
+from OpenSSL import SSL
+import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -44,5 +46,10 @@ class comments(db.Model):
 
 
 from application import routes
+
+
+if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
+    sslify = SSLify(app)
+
 if __name__=="__main__":
     app.run(debug=True)
