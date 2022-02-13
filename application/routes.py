@@ -1,3 +1,4 @@
+import email
 from application import app,db,users,comments
 from flask import render_template,request,json,Response, redirect , flash, url_for,session
 from werkzeug.security import generate_password_hash,check_password_hash
@@ -88,6 +89,18 @@ def home():
 
     return render_template("home.html",home=True, comments=comment_data)
     
+@app.route("/filtered_home",methods=['GET','POST'])
+def filtered_home():
+    
+    if not session.get('status'):
+        return redirect("index")
+
+    comment_data=comments.query.all()
+    if request.method == "POST":
+        mail = request.form.get('email')
+        comment_data=comments.query.filter(comments.email_id.contains(mail))
+
+    return render_template("home.html",home=True, comments=comment_data)
         
 @app.route("/logout")
 def logout():
