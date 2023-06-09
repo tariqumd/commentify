@@ -1,7 +1,6 @@
 # commentify
 Modern Feedback Application
 -----------------------------------------------------------------------------------------------------------------------------------------------
-Hello, This Application-Commentify is created as part of Zoho Assesment as per the requirement.
 
 Technology Stack:
 Front end: HTML,CSS and Bootstrap (for Mobile first design model).
@@ -29,7 +28,6 @@ To run the app locally, Follow the below instructions. (Make sure python and pip
 6. The flask app will be started and running in your designated local host.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
-All the modules mentioned have been completed.
 This Application allows user to signup with email-id, password and a secret key.
 Secret key is used to login, when the password is forgetten.
 Once logged in, it takes you to the home page, where you can post comments and view other user's comments.
@@ -37,6 +35,3 @@ The filter module is implemented for displaying only the logged in user's commen
 Additionally we can filter other users's comments too, and also reset the filters.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
-Hope all the needed essential details is documented above.
-
-Looking forward for the feedback and result.
