@@ -11,8 +11,6 @@ You can instantly create a user in signup, and signin to the app to use it.
 
 User passwords are encrypted and stored, and OpenSSL is used for secure connection.
 
-Site URL: https://commentify-zoho-assesment.herokuapp.com/
-
 --------------------------------------------------------------------------------------------------------------------------------------------------
 To run the app locally, Follow the below instructions. (Make sure python and pip are preinstalled in local)
 
